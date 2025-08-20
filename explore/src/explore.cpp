@@ -250,6 +250,7 @@ void Explore::makePlan()
 
   if (frontiers.empty()) {
     RCLCPP_WARN(logger_, "No frontiers found, stopping.");
+    //TODO: create a function where the map is being saved!
     stop(true);
     return;
   }
