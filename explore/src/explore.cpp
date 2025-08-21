@@ -251,6 +251,16 @@ void Explore::makePlan()
   if (frontiers.empty()) {
     RCLCPP_WARN(logger_, "No frontiers found, stopping.");
     //TODO: create a function where the map is being saved!
+    // Systembefehl zum Speichern der Karte
+    std::string save_cmd = "ros2 run nav2_map_server map_saver_cli -f ~/Documents/map";
+    int ret = system(save_cmd.c_str());
+
+    if (ret == 0) {
+        RCLCPP_INFO(this->get_logger(), "Map saved successfully.");
+    } else {
+        RCLCPP_ERROR(this->get_logger(), "Failed to save map.");
+    }
+
     stop(true);
     return;
   }
