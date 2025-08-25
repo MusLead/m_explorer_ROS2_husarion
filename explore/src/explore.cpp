@@ -382,7 +382,8 @@ void Explore::reachedGoal(const NavigationGoalHandle::WrappedResult& result,
     case rclcpp_action::ResultCode::CANCELED:
       RCLCPP_DEBUG(logger_, "Goal was canceled");
       // If goal canceled might be because exploration stopped from topic. Don't make new plan.
-      return;
+      // TODO: ARE YOU SURE?? WHAT ABOUT THE RECOVERY PLAN???
+      //return;
     default:
       RCLCPP_WARN(logger_, "Unknown result code from move base nav2");
       break;
